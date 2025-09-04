@@ -11,13 +11,15 @@ Swagger документация
 Docker Compose для запуска
 Health check endpoint
 
-# Запуск
+## Запуск
 
+```bash
 make infra-build
+```
 
 Сервис будет доступен на `http://localhost:8080`
 
-# API Endpoints
+## API Endpoints
 
 `GET /health` - проверка здоровья сервиса
 `GET /api-docs/` - Swagger документация
@@ -28,13 +30,15 @@ make infra-build
 `DELETE /subscriptions/{id}` - удаление подписки
 `GET /subscriptions/summary` - суммарная стоимость за период
 
-# Миграции
+## Миграции
 
 Для управления миграциями используйте:
 
+```bash
 make migrate-up
 make migrate-down
 make migrate-reset
+```
 
 ## Переменные окружения
 
@@ -50,15 +54,17 @@ LOG_LEVEL=info
 
 ## Makefile команды
 
-make build
-make run
-make clean
-make infra-up
-make infra-down
-make infra-build
-make migrate-up  
-make migrate-down  
-make migrate-reset
+```bash
+make build         # Собрать приложение
+make run           # Собрать и запустить приложение
+make clean         # Удалить артефакты сборки
+make infra-up      # Запустить инфраструктуру
+make infra-down    # Остановить инфраструктуру
+make infra-build   # Пересобрать и запустить инфраструктуру
+make migrate-up    # Применить миграции
+make migrate-down  # Откатить миграции
+make migrate-reset # Сбросить миграции
+```
 
 ## Технологии
 
@@ -69,4 +75,3 @@ pgx** - PostgreSQL драйвер
 **golang-migrate - миграции
 Swagger- документация API
 Docker- контейнеризация
-# Effictive_mobile

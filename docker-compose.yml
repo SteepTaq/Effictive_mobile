@@ -1,0 +1,32 @@
+version: '3.9'
+services:
+    db:
+        image: postgres:15-alpine
+        environment:
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DB: subscriptions
+            POSTGRES_USER: postgres
+        ports:
+            - '5432:5432'
+        volumes:
+            - ./postgres_data:/var/lib/postgresql/data
+
+    api:
+        build: .
+        command:
+        depends_on:
+            - db
+        environment:
+            - APP_PORT=8080
+            - APP_ENV=development
+            - DB_HOST=db
+            - DB_PORT=5432
+            - DB_USER=postgres
+            - DB_PASSWORD=postgres
+            - DB_NAME=subscriptions
+            - LOG_LEVEL=info
+        ports:
+            - '8080:8080'
+
+volumes:
+    postgres_data:
